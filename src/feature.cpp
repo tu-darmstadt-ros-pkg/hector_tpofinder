@@ -13,12 +13,10 @@ using namespace cv;
 
 namespace tpofinder {
 
-    Feature::Feature(const string& detectorName,
-            const string& extractorName,
-            const string& matcherName) :
-    /*        */ detector(FeatureDetector::create(detectorName)),
-    /*        */ extractor(DescriptorExtractor::create(extractorName)),
-    /*        */ matcher(DescriptorMatcher::create(matcherName)) {
+    Feature::Feature() :
+    /*        */ detector(cv::ORB::create()),
+    /*        */ extractor(cv::ORB::create()),
+    /*        */ matcher(cv::FlannBasedMatcher::create()) {
         validate();
     }
 

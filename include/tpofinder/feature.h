@@ -12,9 +12,7 @@
 namespace tpofinder {
 
     struct Feature {
-        Feature(const std::string& detectorName = "ORB",
-                const std::string& extractorName = "ORB",
-                const std::string& matcherName = "BruteForce-Hamming");
+        Feature();
 
         Feature(const cv::Ptr<cv::FeatureDetector> detector,
                 const cv::Ptr<cv::DescriptorExtractor> extractor,

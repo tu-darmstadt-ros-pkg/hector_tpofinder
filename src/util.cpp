@@ -50,8 +50,8 @@ namespace tpofinder {
         out.release();
     }
 
-    void perspectiveTransformKeypoints(const vector<KeyPoint>& src,
-            vector<KeyPoint>& dst, const Mat& mtx) {
+    void perspectiveTransformKeypoints(const std::vector<KeyPoint>& src,
+            std::vector<KeyPoint>& dst, const Mat& mtx) {
         Mat_<Point2f> srcMat;
         for (size_t i = 0; i < src.size(); i++) {
             srcMat.push_back(src[i].pt);
@@ -65,13 +65,13 @@ namespace tpofinder {
         }
     }
 
-    vector<int> findInliers(const vector<Point2f>& pts1, const vector<Point2f>& pts2,
+    std::vector<int> findInliers(const std::vector<Point2f>& pts1, const std::vector<Point2f>& pts2,
             const Mat& homography, const float reprojThreshold) {
         CV_Assert(pts1.size() == pts2.size());
         CV_Assert(!homography.empty());
 
-        vector<int> inliers;
-        vector<Point2f> pts1_;
+        std::vector<int> inliers;
+        std::vector<Point2f> pts1_;
         perspectiveTransform(pts1, pts1_, homography);
         for (size_t i = 0; i < pts1.size(); i++) {
             if (norm(pts1_[i] - pts2[i]) <= reprojThreshold) {

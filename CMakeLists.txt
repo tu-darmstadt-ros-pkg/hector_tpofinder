@@ -11,7 +11,7 @@ find_package(catkin REQUIRED COMPONENTS
 )
 
 # OpenCV
-find_package(OpenCV 2.4 REQUIRED)
+find_package(OpenCV 3.0 REQUIRED)
 
 # Boost
 find_package(Boost COMPONENTS filesystem program_options system)
