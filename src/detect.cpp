@@ -12,6 +12,9 @@
 #include <opencv2/features2d/features2d.hpp>
 #include <stdarg.h>
 
+#include <iostream>
+
+
 using namespace cv;
 using namespace std;
 
@@ -48,6 +51,7 @@ namespace tpofinder {
     vector<Detection> Detector::detect(const Scene& scene) {
         vector<Detection> detections;
         vector<DMatch> matches = match(scene);
+        cout << "Matches: " << matches.size() << endl;
 
         for (size_t i = 0; i < modelbase_.models.size(); i++) {
             const PlanarModel& model = modelbase_.models[i];

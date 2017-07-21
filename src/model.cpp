@@ -26,10 +26,11 @@ namespace tpofinder {
         CV_Assert(roi.channels() == 1);
 
         vector<KeyPoint> keypoints;
-        // TODO: convert to grayscale (SIFT, SURF ...)
-        feature.detector->detect(image, keypoints, roi);
+        Mat gray_image;
+        cv::cvtColor(image, gray_image, CV_BGR2GRAY);
+        feature.detector->detect(gray_image, keypoints, roi);
         Mat descriptors;
-        feature.extractor->compute(image, keypoints, descriptors);
+        feature.extractor->compute(gray_image, keypoints, descriptors);
 
         return PlanarView(image, roi > 0, homography, keypoints, descriptors);
     }
